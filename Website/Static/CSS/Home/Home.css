@@ -1,0 +1,264 @@
+
+body{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+
+/* ASCII Art logo */
+#TitleLogo{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+.TitleLogoText{
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+
+
+
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    --bg: #071018;
+    --surface: #0d1b26;
+    --text: #d9edf2;
+    --muted: #6c8994;
+    --accent: #38c6c8;
+    --accent-soft: rgba(56, 198, 200, 0.25);
+    --danger: #ef6475;
+    --border: #23414b;
+
+    margin: 0;
+    min-height: 100vh;
+    padding: 2rem;
+
+    background: var(--bg);
+    color: var(--text);
+
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.6;
+}
+
+
+/* Navigation */
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    padding: 1rem 1.5rem;
+    margin-bottom: 3rem;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+}
+
+nav a,
+nav button {
+    position: relative;
+
+    color: var(--accent);
+    font-family: inherit;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+nav a {
+    padding: 0.25rem 0.5rem;
+}
+
+nav a:focus,
+nav button:focus,
+#ChallengesLink:focus {
+    outline: none;
+    color: white;
+    text-shadow: 0 0 8px var(--accent);
+}
+
+nav a:focus::before,
+nav button:focus::before,
+#ChallengesLink:focus::before {
+    content: ">";
+    position: absolute;
+    left: -1rem;
+    color: var(--accent);
+}
+
+nav button {
+    margin-left: auto;
+
+    padding: 0.4rem 1.2rem;
+
+    background: transparent;
+    border: 1px solid var(--accent);
+
+    cursor: pointer;
+}
+
+nav button:hover,
+nav button:focus {
+    background: var(--accent);
+    color: var(--bg);
+    text-shadow: none;
+}
+
+
+/* Heading */
+
+h1 {
+    text-align: center;
+
+    font-size: 1.8rem;
+    font-weight: normal;
+    letter-spacing: 0.1em;
+
+    color: var(--text);
+}
+
+
+/* ASCII Logo */
+
+#TitleLogo {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    width: fit-content;
+
+    margin: 2rem auto;
+    padding: 2rem;
+
+    background: var(--surface);
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid(var(--border));
+}
+
+.TitleLogoText {
+    margin: 0;
+
+    color: var(--accent);
+
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.65rem;
+    line-height: 1;
+
+    white-space: pre;
+
+    user-select: none;
+
+    text-shadow: 0 0 10px rgba(56, 198, 200, 0.35);
+}
+
+
+/* Story */
+
+.Teaser {
+    max-width: 850px;
+
+    margin: 3rem auto;
+    padding: 1.5rem;
+
+    background: var(--surface);
+
+    border-left: 3px solid var(--accent);
+
+    color: var(--text);
+}
+
+
+/* Cursor */
+
+.flashing_cursor {
+    display: inline-block;
+
+    width: 0.65em;
+    height: 1.1em;
+
+    margin-left: 0.25rem;
+
+    background: var(--accent);
+
+    vertical-align: middle;
+
+    animation: cursor-blink 1s steps(2, start) infinite;
+}
+
+@keyframes cursor-blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+
+/* Challenge Button */
+
+#ChallengesLink {
+    position: relative;
+
+    display: block;
+    width: fit-content;
+
+    margin: 3rem auto;
+    padding: 1rem 3rem;
+
+    border: 1px solid var(--accent);
+
+    color: var(--accent);
+
+    font-size: 1.2rem;
+
+    text-decoration: none;
+
+    transition: background 0.2s ease;
+}
+
+#ChallengesLink:hover,
+#ChallengesLink:focus {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+#ChallengesLink:focus {
+    outline: none;
+
+    box-shadow: 0 0 20px var(--accent-soft);
+}
+
+
+/* Subtle Interface Texture */
+
+body::after {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    background: linear-gradient(
+        rgba(56, 198, 200, 0.03) 1px,
+        transparent 1px
+    );
+
+    background-size: 100% 4px;
+
+    opacity: 0.15;
+}
