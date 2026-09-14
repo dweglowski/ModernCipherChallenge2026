@@ -1,0 +1,224 @@
+
+body{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+
+
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    --bg: #071018;
+    --surface: #0d1b26;
+    --text: #d9edf2;
+    --muted: #6c8994;
+    --accent: #38c6c8;
+    --accent-soft: rgba(56, 198, 200, 0.25);
+    --danger: #ef6475;
+    --border: #23414b;
+
+    margin: 0;
+    min-height: 100vh;
+    padding: 2rem;
+
+    background: var(--bg);
+    color: var(--text);
+
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.6;
+}
+
+
+/* Navigation */
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    padding: 1rem 1.5rem;
+    margin-bottom: 3rem;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+}
+
+nav a,
+nav button {
+    position: relative;
+
+    color: var(--accent);
+    font-family: inherit;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+nav a {
+    padding: 0.25rem 0.5rem;
+}
+
+nav a:focus,
+nav button:focus,
+#ChallengesLink:focus {
+    outline: none;
+    color: white;
+    text-shadow: 0 0 8px var(--accent);
+}
+
+nav a:focus::before,
+nav button:focus::before,
+#ChallengesLink:focus::before {
+    content: ">";
+    position: absolute;
+    left: -1rem;
+    color: var(--accent);
+}
+
+nav button {
+    margin-left: auto;
+
+    padding: 0.4rem 1.2rem;
+
+    background: transparent;
+    border: 1px solid var(--accent);
+
+    cursor: pointer;
+}
+
+nav button:hover,
+nav button:focus {
+    background: var(--accent);
+    color: var(--bg);
+    text-shadow: none;
+}
+
+
+/* Heading */
+
+h1 {
+    text-align: center;
+
+    font-size: 1.8rem;
+    font-weight: normal;
+    letter-spacing: 0.1em;
+
+    color: var(--text);
+}
+h2 {
+    text-align: center;
+
+    font-size: 1.5rem;
+    font-weight: normal;
+    letter-spacing: 0.1em;
+
+    color: var(--accent);
+}
+#ChallengeTitle {
+    text-transform: uppercase;
+}
+
+
+#ChallengeContainer {
+    max-width: 900px;
+    padding: 2rem 2.5rem;
+    margin: 0 auto 3rem;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+}
+
+#ChallengeContainer h1 {
+    margin: 0 0 2rem;
+}
+
+#ChallengeContainer h2 {
+    margin: 2.5rem 0 1rem;
+    text-align: left;
+}
+
+#ChallengeContainer h2:first-of-type {
+    margin-top: 0;
+}
+
+#ChallengeContainer a {
+    color: var(--accent);
+}
+
+#ChallengeContainer a:hover,
+#ChallengeContainer a:focus {
+    color: white;
+    text-shadow: 0 0 8px var(--accent);
+}
+
+@media (max-width: 700px) {
+    body {
+        padding: 1rem;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 0.75rem 1rem;
+        margin-bottom: 2rem;
+    }
+
+    nav button {
+        margin-left: 0;
+    }
+
+    #ChallengeContainer {
+        padding: 1.5rem;
+    }
+
+    #ChallengeContainer h1 {
+        font-size: 1.45rem;
+    }
+}
+
+#ChallengeTable {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-spacing: 0;
+    background: var(--surface);
+    text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Subtle Interface Texture */
+
+body::after {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    background: linear-gradient(
+        rgba(56, 198, 200, 0.03) 1px,
+        transparent 1px
+    );
+
+    background-size: 100% 4px;
+
+    opacity: 0.15;
+}
