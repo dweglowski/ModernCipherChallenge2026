@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Modern Cipher Challenge 2026</title>
+        <link rel="stylesheet" type="text/css" href="Static/CSS/Mission/Mission.css">
+    </head>
+    <body>
+        <nav>
+            <a href=".">Home</a>
+            <a href="challenges">Challenges</a>
+            <a href="leaderboard">Leaderboard</a>
+            <a href="about">About</a>
+            <a href="rules">Rules</a>
+            <button id="LoginButton" onclick="window.location.href='login'">Login</button>
+            <button id="Logout" onclick="window.location.href='logout'" hidden>Logout</button>
+        </nav>
+        <div id="ChallengeContainer">
+            <h2>MISSION <span id="MissionNumber">*</span>:</h2>
+            <h1><span id="ChallengeTitle">*** ********* ******</span></h1>
+            <div id="CaseFilesContainer">
+                <h3>Case Files:</h3>
+                <button id="ShowCaseFilesButton" class="CaseFileVisibilityButton" visible>Show case files:</button>
+                <button id="HideCaseFilesButton" class="CaseFileVisibilityButton">Hide case files:</button>
+                <div id="CaseFilesList">
+                    <p>No case files available for this challenge. Some challenges will have case files that provide necessary context.</p>
+                </div>
+            </div>
+            <div id="HintContainer">
+                <h3>Hints:</h3>
+                <button id="ShowHintsButton" class="HintsVisibilityButton" visible>Show available hints:</button>
+                <button id="HideHintsButton" class="HintsVisibilityButton">Hide available hints:</button>
+                <div id="HintList">
+                    <div class="Hint" id="HintTemplate">
+                        <p>Hint <span class="HintNumber">0</span></p>
+                        <p class="TimeRemainingText" visible>Available in: <span class="TimeRemaining">01d 02h 05m</span></p>
+                        <button class="HintButton ShowHintButton" visible disabled>Show Hint</button>
+                        <button class="HintButton HideHintButton">Hide Hint</button>
+                        <div class="HintContent">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="CiphertextContainer"><span id="Ciphertext">Loading ciphertext...</span></div>
+            <div id="SubmitLocalContainer" visible>
+                <textarea id="SubmitLocalInput" placeholder="Enter your solution here..." autocomplete="off"></textarea>
+                <div id="SubmitLocalFeedback">
+                    <p id="SubmitLocalFeedbackCorrect">
+                        <b>Correct:</b> Correct! You are not signed in, please sign in to submit a solution to the leaderboard and receive feedback for incorrect submissions.<br>
+                    </p>
+                    <p id="SubmitLocalFeedbackIncorrect"><b>Incorrect:</b> Feedback is only available if you are signed in, please sign in or create an account if you would like feedback.</p>
+                </div>
+                <button id="SubmitLocalButton">Submit Solution</button>
+            </div>
+            <!-- TODO: implement the online submission system -->
+            <!-- <div id="SubmitContainer" visible>
+                <textarea id="SubmitInput" placeholder="Enter your solution here..." autocomplete="off"></textarea>
+                <div id="SubmitFeedback">
+                    <p id="SubmitFeedbackCorrect">
+                        Correct! You received <span id="SubmitScore">0</span> points for this submission.<br>
+                        <span id="SubmitFeedbackText">Completion message will appear here.</span>
+                    </p>
+                    <p id="SubmitFeedbackIncorrect">
+                        Incorrect. Feedback (first 10 incorrect characters are highlighted).<br>
+                        <span id="SubmitFeedbackIncorrectText">fdfds</span>
+                    </p>
+                </div>
+                <span id="SubmitFeedbackLoading">Loading...</span>
+                <button id="SubmitButton">Submit Solution</button>
+            </div> -->
+            <div id="SolutionContainer">
+                <button id="ShowSolutionButton">Show official decrypt:</button>
+                <p id="SolutionText">Loading official solution...</p>
+            </div>
+        </div>
+        
+        <script src="Static/JS/Mission/Mission.js"></script>
+    </body>
+</html>
