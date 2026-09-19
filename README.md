@@ -15,4 +15,5 @@ This challenge is designed to challenge all participants. It primarily targets s
 Most participants are expected and encouraged to use the hint system for each challenge, which, over several days of hints, will build up the knowledge to be able to solve each challenge themselves. More experienced students might also require several hints in the harder final challenges.
 
 ## When does it start?
-The challenge is coming soon and expected to align with a similar timeline to the National Cipher Challenge.
+The challenge starts on the 5th of October 2026 and runs through until the 10th of March 2027.
+The first 3 missions are practice missions and not used for the total leaderboard.
