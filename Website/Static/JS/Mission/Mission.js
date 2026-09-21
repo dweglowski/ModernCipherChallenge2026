@@ -545,7 +545,7 @@ async function checkLoginStatus() {
 async function initializeMission() {
     const availabilityStatus = await checkMissionAvailability();
     if (availabilityStatus === "Mission completed") {
-        loadCiphertext(missionNumber);
+        loadCiphertext(missionNumber, live = false);
         loadHints(missionNumber);
         loadPlaintext(missionNumber);
         loadCaseFiles(missionNumber);
