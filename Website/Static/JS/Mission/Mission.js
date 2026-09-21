@@ -126,13 +126,28 @@ async function fetchCiphertext(missionNumber) {
     }
 }
 
-async function loadCiphertext(missionNumber) {
+async function loadCiphertext(missionNumber, is_live = true) {
+    // try get ciphertext from local storage first if possible
+    if (localStorage.getItem(`ciphertext_mission_${missionNumber}`)) {
+        const cachedCiphertext = localStorage.getItem(`ciphertext_mission_${missionNumber}`);
+        document.getElementById("Ciphertext").textContent = cachedCiphertext;
+        return;
+    }
     const ciphertext = await fetchCiphertext(missionNumber);
     if (ciphertext === "Error fetching ciphertext. Please try again later.") {
         console.error(ciphertext);
         return;
     }
+    // Save to local storage for future use
+    localStorage.setItem(`ciphertext_mission_${missionNumber}`, ciphertext);
+
     document.getElementById("Ciphertext").textContent = ciphertext;
+
+    // If live, update analytics
+    if (is_live) {
+        // Send a POST request to the analytics endpoint
+        analyticsMissionView(missionNumber);
+    }
 }
 
 
@@ -209,6 +224,8 @@ async function submitLocal(missionNumber) {
         return;
     }
 
+    analyticsSubmission(missionNumber);
+
     const hashHex = await hashSolution(userInput);
 
     if (hashHex === solutionHash) {
@@ -217,6 +234,7 @@ async function submitLocal(missionNumber) {
         document.getElementById("SubmitLocalButton").setAttribute("disabled", "");
         document.getElementById("SubmitLocalButton").style.display = "none";
         document.getElementById("SubmitLocalButton").textContent = "Correct!";
+        analyticsSubmissionCorrect(missionNumber);
     } else {
         document.getElementById("SubmitLocalFeedbackIncorrect").setAttribute("visible", "");
         document.getElementById("SubmitLocalFeedbackCorrect").removeAttribute("visible");
@@ -473,7 +491,30 @@ async function loadCaseFiles(missionNumber) {
 }
 
 
-
+// Simple anonymous analytics to help me understand how the challenge is being used.
+// Stores only an anonymous total count of views, submissions, and correct submissions for each mission.
+// No personal data is stored or tracked.
+async function analyticsMissionView(missionNumber) {
+    try {
+        const response = await fetch(`https://mcc2026analytics.cipherchallengekeymaster.workers.dev/analytics/mission_view/${missionNumber}`, { method: 'POST' });
+    } catch (error) {
+        return;
+    }
+}
+async function analyticsSubmission(missionNumber) {
+    try {
+        const response = await fetch(`https://mcc2026analytics.cipherchallengekeymaster.workers.dev/analytics/submission/${missionNumber}`, { method: 'POST' });
+    } catch (error) {
+        return;
+    }
+}
+async function analyticsSubmissionCorrect(missionNumber) {
+    try {
+        const response = await fetch(`https://mcc2026analytics.cipherchallengekeymaster.workers.dev/analytics/correct_submission/${missionNumber}`, { method: 'POST' });
+    } catch (error) {
+        return;
+    }
+}
 
 
 
