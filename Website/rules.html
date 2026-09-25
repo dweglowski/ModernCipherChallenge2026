@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Modern Cipher Challenge 2026</title>
+        <link rel="stylesheet" type="text/css" href="Static/CSS/Rules/Rules.css">
+        <script src="Static/JS/General/IsSignedIn.js" defer></script>
+    </head>
+    <body>
+        <nav>
+            <a href=".">Home</a>
+            <a href="challenges">Challenges</a>
+            <a href="leaderboard">Leaderboard</a>
+            <a href="about">About</a>
+            <a href="rules">Rules</a>
+            <button id="LoginButton" onclick="window.location.href='login'">Login</button>
+            <div id="UserMenu" hidden>
+                <button id="Username" type="button" aria-label="Open account menu" title="Open account menu" aria-expanded="false" aria-controls="UserDropdown"></button>
+                <div id="UserDropdown" hidden>
+                    <button id="Logout" type="button" onclick="window.location.href='logout'">Logout</button>
+                </div>
+            </div>
+        </nav>
+        <h1>Rules:</h1>
+        <div id="ChallengeContainer">
+            <h2>1. Registration</h2>
+            <ol>
+                <li>You do not need an account to try the challenges.</li>
+                <li>To participate in the leaderboard or receive automated scoring feedback, you must register for an account.</li>
+                <li>Each participant may have only one account. Creating multiple accounts is not allowed.</li>
+                <li>Participants must choose a unique username and display name. Usernames and display names must not be offensive, inappropriate, or intended to impersonate another person. Accounts that violate this rule may be deleted and the participant may be prevented from registering again.</li>
+                <li>By registering, you agree to these rules and the <a href="privacy-notice.html" target="_blank">Privacy Policy</a>.</li>
+            </ol>
+
+            <h2>2. Challenge Format</h2>
+            <ol>
+                <li>Challenges will be released according to the published schedule and will be available for a limited time.</li>
+                <li>The ciphertext, case files, instructions, and other materials for each challenge will be provided on the website.</li>
+                <li>Participants will receive feedback indicating whether their submitted solution is correct or incorrect.</li>
+                <li>Hints will be released throughout each challenge, starting with more cryptic guidance and becoming progressively more useful as the challenge progresses.</li>
+            </ol>
+
+            <h2>3. Submitting Solutions</h2>
+            <ol>
+                <li>Solutions must be submitted through the competition website.</li>
+                <li>If you are not signed in, submissions are checked locally and are not recorded on the leaderboard.</li>
+                <li>If you are signed in, submissions are checked by the server and additional feedback may be provided. Successful submissions will count towards your leaderboard score.</li>
+                <li>Participants must solve challenges themselves and must not ask another person to solve a challenge or provide a challenge-specific solution.</li>
+                <li>Participants must not share challenge solutions, answers, keys, or other information that would give another participant an unfair advantage.</li>
+                <li>Participants must not make excessive or automated submissions that place an unreasonable load on the competition servers. Deliberate abuse of the submission system may result in disqualification.</li>
+            </ol>
+
+            <h2>4. Scoring</h2>
+            <ol>
+                <li>Your score for each challenge is based on which scoring deadline you submit a fully correct solution before.</li>
+                <li>Only submissions made while signed in can contribute to the leaderboard.</li>
+                <li>Challenge deadlines are shown on each challenge page. All times are UK time (GMT/BST).</li>
+                <li>If you are not signed in, you will only be told whether your solution is correct or incorrect. This check is performed by comparing solution hashes.</li>
+                <li>If you are signed in, your submitted solution may also be compared with the correct answer using Levenshtein distance. If it is within a specified distance of the correct answer, additional feedback may be provided to help identify small mistakes or typos.</li>
+                <li>Participants must not deliberately abuse the feedback system to obtain information beyond what it is intended to provide.</li>
+            </ol>
+
+            <h2>5. Leaderboard</h2>
+            <ol>
+                <li>The leaderboard only applies to participants who are signed in.</li>
+                <li>For each challenge, the leaderboard displays each participant's display name and score.</li>
+                <li>A cumulative score for Missions 4-10 will also be displayed.</li>
+                <li>Scores may be removed or adjusted if they were obtained in violation of these rules or as a result of a technical error.</li>
+            </ol>
+
+            <h2>6. Tools and Resources</h2>
+            <ol>
+                <li>Participants may use tools and software they have written themselves to solve challenges.</li>
+                <li>Unless a challenge explicitly says otherwise, participants must not use pre-existing tools or software specifically designed to solve the challenge or provide an unfair advantage.</li>
+                <li>General-purpose programming languages, calculators, and libraries such as NumPy are permitted.</li>
+                <li>Unless otherwise stated in the case files, participants must not use pre-existing cryptography libraries or challenge-specific solving libraries.</li>
+            </ol>
+
+            <h2>7. AI</h2>
+            <ol>
+                <li>These challenges are intended to teach participants about modern cryptography. Asking an AI to solve a challenge for you defeats this purpose and is therefore prohibited for all participants.</li>
+                <li>If you are <b>not</b> participating in the leaderboard, you may use AI to help you learn or explain concepts related to the challenges.</li>
+                <li>If you are participating in the leaderboard, all use of AI to help solve the challenges is prohibited. Participants should instead use the provided hints, which are designed to gradually explain the techniques needed to solve each challenge.</li>
+            </ol>
+
+            <h2>8. Hints</h2>
+            <ol>
+                <li>Each challenge contains hints to help participants who get stuck.</li>
+                <li>Hints are released automatically throughout the challenge and are designed to progressively guide participants towards the solution.</li>
+                <li>Viewing hints does not affect your score. However, more useful hints are generally released later in the challenge.</li>
+            </ol>
+
+            <h2>9. Fair Play and Security</h2>
+            <ol>
+                <li>Participants must not attempt to gain an unfair advantage over other participants.</li>
+                <li>Participants must not deliberately disrupt the competition or place an unreasonable load on the servers.</li>
+                <li>Participants must not attempt to access another participant's account, submissions, or private information.</li>
+                <li>Participants must not attempt to gain unauthorised access to the competition servers or other competition infrastructure.</li>
+                <li>Participants must not exploit vulnerabilities in the competition infrastructure to gain an advantage. Any security vulnerabilities discovered should be reported to the organisers.</li>
+            </ol>
+
+            <h2>10. Other</h2>
+            <ol>
+                <li>By participating in the competition, you agree to follow these rules and the <a href="privacy-notice.html" target="_blank">Privacy Policy</a>.</li>
+                <li>The organisers may modify the competition schedule, correct errors, amend or suspend challenges, remove invalid scores, or disqualify participants where necessary to preserve the integrity of the competition.</li>
+                <li>If a technical problem or error materially affects a challenge, the organisers may extend its deadline, modify its scoring, or otherwise adjust the challenge as necessary.</li>
+                <li>Material changes to the competition or its rules will be announced on the competition website.</li>
+            </ol>
+        </div>
+        
+    </body>
+</html>

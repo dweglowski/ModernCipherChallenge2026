@@ -98,6 +98,70 @@ nav button:focus {
     text-shadow: none;
 }
 
+nav #UserMenu {
+    position: relative;
+    margin-left: auto;
+}
+
+nav #Username {
+    display: inline-flex;
+    align-items: center;
+    max-width: 22ch;
+    margin-left: 0;
+    padding: 0.35rem 0.75rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: rgba(56, 198, 200, 0.08);
+    color: var(--text);
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+nav #Username::after {
+    content: " v";
+    margin-left: 0.65rem;
+    color: var(--muted);
+}
+
+nav #UserMenu:focus-within::before {
+    content: ">";
+    position: absolute;
+    left: -1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+}
+
+nav #Username:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    background: var(--accent);
+    color: var(--bg);
+    text-shadow: none;
+}
+
+nav #UserDropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    z-index: 10;
+    min-width: 100%;
+    padding: 0.35rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.3);
+}
+
+nav #UserDropdown #Logout {
+    display: block;
+    width: 100%;
+    margin: 0;
+    border: 0;
+    text-align: left;
+}
+
 
 /* Heading */
 

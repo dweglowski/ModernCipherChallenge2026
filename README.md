@@ -1,5 +1,5 @@
 # Modern Cipher Challenge 2026
-## Coming Soon!
+Open for registrations. Competition starts October 5th.
 
 [https://dweglowski.github.io/ModernCipherChallenge2026/](https://dweglowski.github.io/ModernCipherChallenge2026/)
 

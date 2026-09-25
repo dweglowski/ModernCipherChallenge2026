@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Data Deletion Request - Modern Cipher Challenge 2026</title>
+        <script src="Static/JS/General/AuthenticatedAPI.js"></script>
+        <script src="Static/JS/DataDeletion/DataDeletion.js" defer></script>
+    </head>
+    <body>
+        <div id="Step1">
+            <h1>Request to Delete My Data from Modern Cipher Challenge 2026</h1>
+            <p>This action will permanently delete all data from the server related to the following account:</p>
+            <span id="UsernameDisplay"><p style="color: red">Loading username...</p></span>
+            <p>Are you sure you want to proceed?</p>
+            <button id="DeleteDataButton" onclick="deleteMyData()">Yes, delete my data</button>
+        </div>
+        <div id="Step2" hidden>
+            <h1>All data related to your account has been deleted from the server.</h1>
+        </div>
+    </body>
+</html>

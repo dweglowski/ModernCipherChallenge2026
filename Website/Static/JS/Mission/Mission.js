@@ -521,18 +521,6 @@ async function analyticsSubmissionCorrect(missionNumber) {
 
 
 
-// Check if the user is logged in
-async function checkLoginStatus() {
-    const cookies = document.cookie.split(';').map(cookie => cookie.trim());
-    const loggedInCookie = cookies.find(cookie => cookie.startsWith('logged_in='));
-    if (!loggedInCookie) {
-        return false;
-    }
-    const loggedInValue = loggedInCookie.split('=')[1];
-    return loggedInValue === 'true';
-}
-
-
 
 
 

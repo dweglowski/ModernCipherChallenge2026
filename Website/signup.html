@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Modern Cipher Challenge 2026</title>
+        <link rel="stylesheet" type="text/css" href="Static/CSS/Signup/Signup.css">
+        <script src="Static/JS/General/IsSignedIn.js" defer></script>
+        <script src="Static/JS/Signup/Signup.js" defer></script>
+    </head>
+    <body>
+        <nav>
+            <a href=".">Home</a>
+            <a href="challenges">Challenges</a>
+            <a href="leaderboard">Leaderboard</a>
+            <a href="about">About</a>
+            <a href="rules">Rules</a>
+            <button id="LoginButton" onclick="window.location.href='login'">Login</button>
+            <div id="UserMenu" hidden>
+                <button id="Username" type="button" aria-label="Open account menu" title="Open account menu" aria-expanded="false" aria-controls="UserDropdown"></button>
+                <div id="UserDropdown" hidden>
+                    <button id="Logout" type="button" onclick="window.location.href='logout'">Logout</button>
+                </div>
+            </div>
+        </nav>
+        <div id="Step1">
+            <div id="SignupForm">
+                <form>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" minlength="3" maxlength="20" pattern="[A-Za-z0-9_]+" required aria-describedby="username-requirements" title="3-20 characters; letters, numbers, and underscores only" autocomplete="off">
+                    <small id="username-requirements">Username must be 3-20 characters and contain only letters, numbers and underscores.</small><br>
+                    <label for="displayname">Display Name (public):</label>
+                    <input type="text" id="displayname" name="displayname" minlength="1" maxlength="40" required aria-describedby="displayname-requirements" title="1-40 characters" autocomplete="off">
+                    <small id="displayname-requirements">Display name must be between 1 and 40 characters.</small>
+                    <p>The display name will be visible to other users on the leaderboard.</p>
+                    <input type="checkbox" id="confirm_datastorage" name="confirm_datastorage" required autocomplete="off">
+                    <label for="confirm_datastorage"><span>I understand and accept that my data will be stored on a Cloudflare database as outlined in the <a href="privacy-notice.html" target="_blank">Privacy Notice</a>.</span></label><br><br>
+                    <input type="checkbox" id="confirm_rules" name="confirm_rules" required autocomplete="off">
+                    <label for="confirm_rules">I understand and accept the&nbsp;<a href="rules" target="_blank">rules</a>&nbsp;of the challenge.</label><br>
+                    
+                    <span id="SignupError" style="visibility: hidden;"></span><br>
+
+                    <input type="submit" value="Sign Up">
+                </form>
+            </div>
+        </div>
+        <div id="Step2" hidden>
+            <h2>Signup Successful</h2>
+            <p>Since we do not store passwords for security reasons, to log in you will need to use this randomly generated PIN.</p>
+            <p id="PINDisplay">Your PIN: <span id="PIN"></span></p>
+            <p>Make sure to save this somewhere safe because <b>you will not be able to log in if you forget it.</b></p>
+            <p>To continue, please check the box below to confirm that you have saved your PIN.</p>
+            <input type="checkbox" id="PINConfirmed"  autocomplete="off" onclick="document.getElementById('AfterPinConfirm').hidden=false; document.getElementById('PINConfirmed').disabled=true">
+            <label for="PINConfirmed">I have saved my PIN.</label><br><br>
+            <div id="AfterPinConfirm" hidden>
+                <p>Now that you have saved your PIN, you can proceed to the challenges page.</p>
+                <button id="GoToChallenges" onclick="window.location.href='challenges'">Go to Challenges</button>
+            </div>
+        </div>
+    </body>
+</html>

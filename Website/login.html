@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Modern Cipher Challenge 2026</title>
+        <link rel="stylesheet" type="text/css" href="Static/CSS/Login/Login.css">
+        <script src="Static/JS/General/IsSignedIn.js" defer></script>
+        <script src="Static/JS/Login/Login.js" defer></script>
+    </head>
+    <body>
+        <nav>
+            <a href=".">Home</a>
+            <a href="challenges">Challenges</a>
+            <a href="leaderboard">Leaderboard</a>
+            <a href="about">About</a>
+            <a href="rules">Rules</a>
+            <button id="LoginButton" onclick="window.location.href='login'">Login</button>
+            <div id="UserMenu" hidden>
+                <button id="Username" type="button" aria-label="Open account menu" title="Open account menu" aria-expanded="false" aria-controls="UserDropdown"></button>
+                <div id="UserDropdown" hidden>
+                    <button id="Logout" type="button" onclick="window.location.href='logout'">Logout</button>
+                </div>
+            </div>
+        </nav>
+        <div id="Step1">
+            <div id="LoginForm">
+                <form>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" minlength="3" maxlength="20" pattern="[A-Za-z0-9_]+" required aria-describedby="username-requirements" title="3-20 characters; letters, numbers, and underscores only">
+                    <br>
+                    <label for="PIN">PIN:</label>
+                    <div id="PINField">
+                        <input type="password" id="PIN" name="PIN" minlength="11" maxlength="11" pattern="[0-9A-Z]{3}-[0-9A-Z]{3}-[0-9A-Z]{3}" required aria-describedby="PIN-requirements" title="1-40 characters">
+                        <button type="button" id="ShowPIN" aria-label="Temporarily show PIN" title="Hold to show PIN"
+                            onpointerdown="document.getElementById('PIN').type='text'"
+                            onpointerup="document.getElementById('PIN').type='password'"
+                            onpointerleave="document.getElementById('PIN').type='password'"
+                            onpointercancel="document.getElementById('PIN').type='password'"
+                            onkeydown="if (event.key === 'Enter' || event.key === ' ') document.getElementById('PIN').type='text'"
+                            onkeyup="if (event.key === 'Enter' || event.key === ' ') document.getElementById('PIN').type='password'">See</button>
+                    </div>
+                    <small id="PIN-requirements">The PIN you received during signup.</small><br>
+                    
+                    <span id="LoginError" style="visibility: hidden;"></span><br>
+
+                    <p>Don't have an account? <a href="signup">Sign up</a></p>
+
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+        </div>
+        <div id="Step2" hidden>
+            <h2>Login Successful</h2>
+            <p>Welcome back, <span id="UsernameDisplay"></span>!</p>
+            <button id="GoToChallenges" onclick="window.location.href='challenges'">Go to Challenges</button>
+        </div>
+    </body>
+</html>

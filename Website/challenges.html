@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Modern Cipher Challenge 2026</title>
         <link rel="stylesheet" type="text/css" href="Static/CSS/Challenges/Challenges.css">
+        <script src="Static/JS/General/IsSignedIn.js" defer></script>
     </head>
     <body>
         <nav>
@@ -13,7 +14,12 @@
             <a href="about">About</a>
             <a href="rules">Rules</a>
             <button id="LoginButton" onclick="window.location.href='login'">Login</button>
-            <button id="Logout" onclick="window.location.href='logout'" hidden>Logout</button>
+            <div id="UserMenu" hidden>
+                <button id="Username" type="button" aria-label="Open account menu" title="Open account menu" aria-expanded="false" aria-controls="UserDropdown"></button>
+                <div id="UserDropdown" hidden>
+                    <button id="Logout" type="button" onclick="window.location.href='logout'">Logout</button>
+                </div>
+            </div>
         </nav>
         <div id="ChallengeContainer">
             <table id="ChallengeTable">

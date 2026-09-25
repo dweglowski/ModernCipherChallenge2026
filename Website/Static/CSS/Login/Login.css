@@ -1,0 +1,388 @@
+
+body{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+
+
+
+
+
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    --bg: #071018;
+    --surface: #0d1b26;
+    --text: #d9edf2;
+    --muted: #6c8994;
+    --accent: #38c6c8;
+    --accent-soft: rgba(56, 198, 200, 0.25);
+    --danger: #ef6475;
+    --border: #23414b;
+
+    margin: 0;
+    min-height: 100vh;
+    padding: 2rem;
+
+    background: var(--bg);
+    color: var(--text);
+
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.6;
+}
+
+
+/* Navigation */
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    padding: 1rem 1.5rem;
+    margin-bottom: 3rem;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+}
+
+nav a,
+nav button {
+    position: relative;
+
+    color: var(--accent);
+    font-family: inherit;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+nav a {
+    padding: 0.25rem 0.5rem;
+}
+
+nav a:focus,
+nav button:focus,
+#ChallengesLink:focus {
+    outline: none;
+    color: white;
+    text-shadow: 0 0 8px var(--accent);
+}
+
+nav a:focus::before,
+nav button:focus::before,
+#ChallengesLink:focus::before {
+    content: ">";
+    position: absolute;
+    left: -1rem;
+    color: var(--accent);
+}
+
+nav button {
+    margin-left: auto;
+
+    padding: 0.4rem 1.2rem;
+
+    background: transparent;
+    border: 1px solid var(--accent);
+
+    cursor: pointer;
+}
+
+nav button:hover,
+nav button:focus {
+    background: var(--accent);
+    color: var(--bg);
+    text-shadow: none;
+}
+
+nav #UserMenu {
+    position: relative;
+    margin-left: auto;
+}
+
+nav #Username {
+    display: inline-flex;
+    align-items: center;
+    max-width: 22ch;
+    margin-left: 0;
+    padding: 0.35rem 0.75rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: rgba(56, 198, 200, 0.08);
+    color: var(--text);
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+nav #Username::after {
+    content: " v";
+    margin-left: 0.65rem;
+    color: var(--muted);
+}
+
+nav #UserMenu:focus-within::before {
+    content: ">";
+    position: absolute;
+    left: -1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+}
+
+nav #Username:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    background: var(--accent);
+    color: var(--bg);
+    text-shadow: none;
+}
+
+nav #UserDropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    z-index: 10;
+    min-width: 100%;
+    padding: 0.35rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.3);
+}
+
+nav #UserDropdown #Logout {
+    display: block;
+    width: 100%;
+    margin: 0;
+    border: 0;
+    text-align: left;
+}
+
+
+/* Heading */
+
+h1 {
+    text-align: center;
+
+    font-size: 1.8rem;
+    font-weight: normal;
+    letter-spacing: 0.1em;
+
+    color: var(--text);
+}
+
+/* Subtle Interface Texture */
+
+body::after {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    background: linear-gradient(
+        rgba(56, 198, 200, 0.03) 1px,
+        transparent 1px
+    );
+
+    background-size: 100% 4px;
+
+    opacity: 0.15;
+}
+
+/* Login panel */
+
+#Step1,
+#Step2 {
+    width: min(100%, 31rem);
+    margin: 0 auto;
+}
+
+#LoginForm,
+#Step2 {
+    padding: 2rem clamp(1.25rem, 5vw, 3rem);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: 0 0 0 1px rgba(56, 198, 200, 0.04), 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
+}
+
+#LoginForm::before,
+#Step2::before {
+    display: block;
+    margin-bottom: 1.5rem;
+    color: var(--muted);
+    content: "// LOGIN";
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+}
+
+#LoginForm form {
+    display: block;
+}
+
+#LoginForm label {
+    display: block;
+    margin-top: 0.9rem;
+    color: var(--accent);
+}
+
+#LoginForm label:first-child {
+    margin-top: 0;
+}
+
+#LoginForm input[type="text"],
+#LoginForm input[type="password"] {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 0.85rem;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    font: inherit;
+}
+
+#PINField {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+}
+
+#PINField input[type="password"]:focus,
+#PINField input[type="text"]:focus {
+    position: relative;
+    z-index: 1;
+}
+
+#ShowPIN {
+    padding: 0 0.85rem;
+    color: var(--accent);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-left: 0;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.8rem;
+}
+
+#ShowPIN:hover,
+#ShowPIN:focus {
+    color: var(--bg);
+    background: var(--accent);
+    outline: none;
+}
+
+#LoginForm input[type="text"]:focus,
+#LoginForm input[type="password"]:focus {
+    outline: 1px solid var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+#LoginForm input[type="text"]:invalid:not(:placeholder-shown),
+#LoginForm input[type="password"]:invalid:not(:placeholder-shown) {
+    border-color: var(--danger);
+}
+
+#LoginForm small {
+    display: block;
+    margin-top: 0.45rem;
+    color: var(--muted);
+    font-size: 0.78rem;
+}
+
+#LoginForm p {
+    margin: 1.25rem 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+#Step2 p {
+    margin: 1.25rem 0 0;
+    color: var(--muted);
+    font-size: 1.7rem;
+}
+
+#LoginForm a,
+#Step2 a {
+    color: var(--accent);
+}
+
+#LoginError {
+    display: block;
+    min-height: 1.6em;
+    margin-top: 1rem;
+    color: var(--danger);
+}
+
+#LoginForm input[type="submit"],
+#GoToChallenges {
+    margin-top: 1.25rem;
+    padding: 0.7rem 1.4rem;
+    color: var(--bg);
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 0;
+    cursor: pointer;
+    font: inherit;
+    font-weight: bold;
+}
+
+#LoginForm input[type="submit"]:hover,
+#LoginForm input[type="submit"]:focus,
+#GoToChallenges:hover,
+#GoToChallenges:focus {
+    color: var(--text);
+    background: transparent;
+    outline: 1px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Confirmation state */
+
+#Step2 h2 {
+    margin: 0;
+    color: var(--accent);
+    font-size: 1.5rem;
+    font-weight: normal;
+    letter-spacing: 0.08em;
+    text-align: left;
+}
+
+#UsernameDisplay {
+    color: var(--accent);
+}
+
+@media (max-width: 42rem) {
+    body {
+        padding: 1rem;
+    }
+
+    nav {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 0.65rem 1rem;
+        margin-bottom: 2rem;
+        padding: 0.85rem 1rem;
+    }
+
+    nav button {
+        margin-left: 0;
+    }
+
+    nav #UserMenu {
+        margin-left: 0;
+    }
+
+    #LoginForm,
+    #Step2 {
+        padding: 1.5rem 1rem;
+    }
+}
+
