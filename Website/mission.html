@@ -5,6 +5,7 @@
         <title>Modern Cipher Challenge 2026</title>
         <link rel="stylesheet" type="text/css" href="Static/CSS/Mission/Mission.css">
         <script src="Static/JS/General/IsSignedIn.js" defer></script>
+        <script src="Static/JS/General/AuthenticatedAPI.js" defer></script>
     </head>
     <body>
         <nav>
@@ -48,7 +49,7 @@
                 </div>
             </div>
             <div id="CiphertextContainer"><span id="Ciphertext">Loading ciphertext...</span></div>
-            <div id="SubmitLocalContainer" visible>
+            <div id="SubmitLocalContainer">
                 <textarea id="SubmitLocalInput" placeholder="Enter your solution here..." autocomplete="off"></textarea>
                 <div id="SubmitLocalFeedback">
                     <p id="SubmitLocalFeedbackCorrect">
@@ -56,24 +57,22 @@
                     </p>
                     <p id="SubmitLocalFeedbackIncorrect"><b>Incorrect:</b> Feedback is only available if you are signed in, please sign in or create an account if you would like feedback.</p>
                 </div>
-                <button id="SubmitLocalButton">Submit Solution</button>
+                <button id="SubmitLocalButton">Submit Solution (local)</button>
             </div>
-            <!-- TODO: implement the online submission system -->
-            <!-- <div id="SubmitContainer" visible>
+            <div id="SubmitContainer">
                 <textarea id="SubmitInput" placeholder="Enter your solution here..." autocomplete="off"></textarea>
                 <div id="SubmitFeedback">
                     <p id="SubmitFeedbackCorrect">
-                        Correct! You received <span id="SubmitScore">0</span> points for this submission.<br>
-                        <span id="SubmitFeedbackText">Completion message will appear here.</span>
+                        Correct! You gained an extra <span id="SubmitScore">0</span> point(s) for this submission.<br>
                     </p>
                     <p id="SubmitFeedbackIncorrect">
-                        Incorrect. Feedback (first 10 incorrect characters are highlighted).<br>
-                        <span id="SubmitFeedbackIncorrectText">fdfds</span>
+                        Incorrect. Here is some feedback to help spot any mistakes (first 10 mistakes are highlighted).<br>
+                        <span id="SubmitFeedbackIncorrectText"></span>
                     </p>
                 </div>
                 <span id="SubmitFeedbackLoading">Loading...</span>
                 <button id="SubmitButton">Submit Solution</button>
-            </div> -->
+            </div>
             <div id="SolutionContainer">
                 <button id="ShowSolutionButton">Show official decrypt:</button>
                 <p id="SolutionText">Loading official solution...</p>

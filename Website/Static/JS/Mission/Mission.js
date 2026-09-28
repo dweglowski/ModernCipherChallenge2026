@@ -240,7 +240,7 @@ async function submitLocal(missionNumber) {
         document.getElementById("SubmitLocalFeedbackCorrect").removeAttribute("visible");
         // Re-enable the submit button
         document.getElementById("SubmitLocalButton").removeAttribute("disabled");
-        document.getElementById("SubmitLocalButton").textContent = "Submit Solution";
+        document.getElementById("SubmitLocalButton").textContent = "Submit Solution (local)";
     }
 
 
@@ -523,6 +523,102 @@ async function analyticsSubmissionCorrect(missionNumber) {
 
 
 
+async function submit(missionNumber) {
+    const userInput = document.getElementById("SubmitInput").value.trim();
+    if (!userInput) {
+        document.getElementById("SubmitFeedbackIncorrect").setAttribute("visible", "");
+        document.getElementById("SubmitFeedbackCorrect").removeAttribute("visible");
+        return;
+    }
+    document.getElementById("SubmitFeedbackCorrect").removeAttribute("visible");
+    document.getElementById("SubmitFeedbackIncorrect").removeAttribute("visible");
+
+    document.getElementById("SubmitFeedbackLoading").setAttribute("visible", "");
+
+    // Dissable the submit button while processing
+    document.getElementById("SubmitButton").setAttribute("disabled", "");
+    document.getElementById("SubmitButton").textContent = "Checking...";
+    
+    var response;
+    try {
+        response = await apiFetch(`/submissions/submit`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                challengeId: missionNumber,
+                solution: userInput,
+            }),
+        });
+    } catch (error) {
+        console.error("Network error:", error);
+        document.getElementById("SubmitFeedbackIncorrect").setAttribute("visible", "");
+        document.getElementById("SubmitFeedbackCorrect").removeAttribute("visible");
+        document.getElementById("SubmitButton").removeAttribute("disabled");
+        document.getElementById("SubmitButton").textContent = "Submit Solution";
+        document.getElementById("SubmitFeedbackIncorrectText").textContent = "Network error. Please try again later.";
+        document.getElementById("SubmitFeedbackLoading").removeAttribute("visible");
+        return;
+    }
+    
+    analyticsSubmission(missionNumber);
+    
+    response = await response.json();
+
+    document.getElementById("SubmitFeedbackLoading").removeAttribute("visible");
+    
+    if (!response.success) {
+        document.getElementById("SubmitFeedbackIncorrect").setAttribute("visible", "");
+        document.getElementById("SubmitFeedbackCorrect").removeAttribute("visible");
+        document.getElementById("SubmitButton").removeAttribute("disabled");
+        document.getElementById("SubmitButton").textContent = "Submit Solution";
+        if (response.error == "Authentication required") {
+            document.getElementById("SubmitFeedbackIncorrectText").textContent = "You session has expired. Please logout then log in again.";
+        } else {
+            document.getElementById("SubmitFeedbackIncorrectText").textContent = "Network error. Please try again later.";
+        }
+        return;
+    }
+    if (response.correct) {
+        document.getElementById("SubmitFeedbackCorrect").setAttribute("visible", "");
+        document.getElementById("SubmitFeedbackIncorrect").removeAttribute("visible");
+        document.getElementById("SubmitButton").setAttribute("disabled", "");
+        document.getElementById("SubmitButton").style.display = "none";
+        document.getElementById("SubmitButton").textContent = "Correct!";
+        document.getElementById("SubmitScore").textContent = response.pointsGained;
+        analyticsSubmissionCorrect(missionNumber);
+    }
+    else {
+        document.getElementById("SubmitFeedbackIncorrect").setAttribute("visible", "");
+        document.getElementById("SubmitFeedbackCorrect").removeAttribute("visible");
+        document.getElementById("SubmitButton").removeAttribute("disabled");
+        document.getElementById("SubmitButton").textContent = "Submit Solution";
+        document.getElementById("SubmitFeedbackIncorrectText").textContent = response.feedback;
+
+        // Make sure that the b tags are bold without just using innerHTML (to avoid XSS vulnerabilities)
+        const feedbackTextElement = document.getElementById("SubmitFeedbackIncorrectText");
+        feedbackTextElement.innerHTML = ""; // Clear existing content
+
+        const feedbackParts = response.feedback.split(/(<b>.*?<\/b>)/g);
+        for (const part of feedbackParts) {
+            if (part.startsWith("<b>") && part.endsWith("</b>")) {
+                const boldText = part.slice(3, -4); // Remove <b> and </b>
+                const bElement = document.createElement("b");
+                bElement.textContent = boldText;
+                feedbackTextElement.appendChild(bElement);
+            } else {
+                const textNode = document.createTextNode(part);
+                feedbackTextElement.appendChild(textNode);
+            }
+        }
+    }
+    
+
+
+}
+
+
 
 
 
@@ -557,6 +653,26 @@ async function initializeMission() {
         localSubmitButton.addEventListener("click", () => {
             submitLocal(missionNumber);
         });
+
+
+        // If user is signed in, show the main submission form and hide the local submission form
+        if (isUserSignedIn()) {
+            document.getElementById("SubmitLocalContainer").style.display = "none";
+            document.getElementById("SubmitContainer").setAttribute("visible", "");
+
+
+            // Bind the main submission button
+            const submitButton = document.getElementById("SubmitButton");
+            submitButton.addEventListener("click", () => {
+                submit(missionNumber);
+            });
+
+        } else {
+            document.getElementById("SubmitLocalContainer").setAttribute("visible", "");
+            document.getElementById("SubmitContainer").style.display = "none";
+        }
+
+
         return;
     }
     else {
@@ -573,18 +689,6 @@ async function initializeMission() {
 
         return;
     }
-
-
-
-    // If logged in, hide local submission form and show the main submission form
-    // const isLoggedIn = await checkLoginStatus();
-    // if (isLoggedIn) {
-    //     document.getElementById("SubmitLocalContainer").removeAttribute("visible");
-    //     document.getElementById("SubmitContainer").setAttribute("visible", "");
-    // } else {
-    //     document.getElementById("SubmitLocalContainer").setAttribute("visible", "");
-    //     document.getElementById("SubmitContainer").removeAttribute("visible");
-    // }
 }
 
 

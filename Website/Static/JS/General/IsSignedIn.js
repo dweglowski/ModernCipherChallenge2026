@@ -18,6 +18,12 @@ function updateAuthenticationControls() {
 	}
 }
 
+function isUserSignedIn() {
+	var sessionToken = sessionStorage.getItem("sessionToken");
+	var usernameValue = sessionStorage.getItem("username");
+	return Boolean(sessionToken && usernameValue);
+}
+
 function setupUserMenu() {
 	var userMenu = document.getElementById("UserMenu");
 	var username = document.getElementById("Username");
