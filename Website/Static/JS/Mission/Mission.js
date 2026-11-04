@@ -3,6 +3,23 @@ const testing_url = "https://raw.githubusercontent.com/dweglowski/ModernCipherCh
 
 
 
+// Deadlines
+const ShowDeadlinesButton = document.getElementById("ShowDeadlinesButton");
+const HideDeadlinesButton = document.getElementById("HideDeadlinesButton");
+const DeadlinesList = document.getElementById("DeadlinesList");
+
+ShowDeadlinesButton.addEventListener("click", () => {
+    DeadlinesList.setAttribute("visible", "");
+    HideDeadlinesButton.setAttribute("visible", "");
+    ShowDeadlinesButton.removeAttribute("visible");
+});
+
+HideDeadlinesButton.addEventListener("click", () => {
+    DeadlinesList.removeAttribute("visible");
+    HideDeadlinesButton.removeAttribute("visible");
+    ShowDeadlinesButton.setAttribute("visible", "");
+});
+
 // Case Files
 const ShowCaseFilesButton = document.getElementById("ShowCaseFilesButton");
 const HideCaseFilesButton = document.getElementById("HideCaseFilesButton");
@@ -95,6 +112,16 @@ async function checkMissionAvailability() {
 
     // Load the title
     document.getElementById("ChallengeTitle").textContent = missionInfo.title;
+
+    // Load the deadlines
+    const deadlinesList = document.getElementById("DeadlinesList");
+    deadlinesList.innerHTML = ""; // Clear existing deadlines
+    const deadlinesLines = missionInfo.deadlines.split('\n');
+    for (const line of deadlinesLines) {
+        const li = document.createElement('li');
+        li.textContent = line;
+        deadlinesList.appendChild(li);
+    }
 
     const currentTime = new Date();
     const startTime = new Date(missionInfo.start_time);
