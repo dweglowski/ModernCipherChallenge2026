@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Modern Cipher Challenge 2026</title>
+        <link rel="stylesheet" type="text/css" href="Static/CSS/Leaderboard/Leaderboard.css">
+        <script src="Static/JS/General/IsSignedIn.js" defer></script>
+        <script src="Static/JS/Leaderboard/Leaderboard.js" defer></script>
+    </head>
+    <body>
+        <nav>
+            <a href=".">Home</a>
+            <a href="challenges">Challenges</a>
+            <a href="leaderboard">Leaderboard</a>
+            <a href="about">About</a>
+            <a href="rules">Rules</a>
+            <button id="LoginButton" onclick="window.location.href='login'">Login</button>
+            <div id="UserMenu" hidden>
+                <button id="Username" type="button" aria-label="Open account menu" title="Open account menu" aria-expanded="false" aria-controls="UserDropdown"></button>
+                <div id="UserDropdown" hidden>
+                    <button id="Logout" type="button" onclick="window.location.href='logout'">Logout</button>
+                </div>
+            </div>
+        </nav>
+        <div id="LeaderboardContainer">
+            <h1>Leaderboard</h1>
+            <label for="leaderboard-select">
+            Select leaderboard:
+            </label>
+
+            <select id="leaderboard-select" disabled>
+            <option value="">Loading...</option>
+            </select>
+        </div>
+        <p
+            id="leaderboard-status"
+            role="status"
+            aria-live="polite"
+        ></p>
+
+        <table class="leaderboard-table">
+
+            <thead>
+            <tr>
+                <th>Position</th>
+                <th>Team</th>
+                <th>Score</th>
+            </tr>
+            </thead>
+
+            <tbody id="leaderboard-body">
+            </tbody>
+
+        </table>
+        
+    </body>
+</html>
