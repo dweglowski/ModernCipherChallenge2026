@@ -1,4 +1,0 @@
-Test hint 1
-<code>
-Test code
-</code>

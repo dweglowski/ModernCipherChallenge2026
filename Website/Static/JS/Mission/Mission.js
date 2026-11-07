@@ -74,7 +74,7 @@ ShowSolutionButton.addEventListener("click", () => {
 const urlParams = new URLSearchParams(window.location.search);
 const requestedMission = urlParams.get("mission");
 let missionNumber;
-if (/^(?:[0-9]|10)$/.test(requestedMission ?? "")) { // change back after testing mission 0 is done
+if (/^(?:[1-9]|10)$/.test(requestedMission ?? "")) {
     missionNumber = Number(requestedMission);
 } else {
     missionNumber = 1;
@@ -324,14 +324,7 @@ async function loadHints(missionNumber) {
             hintButton.setAttribute("disabled", "");
             timeRemainingText.setAttribute("visible", "");
             const timeDiff = startTime - currentTime;
-            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-            timeRemainingSpan.textContent = `${days}d ${hours}h ${minutes}m`;
-            if (days === 0 && hours === 0 && minutes === 0) {
-                // Less than 1m left, show 0d 0h 1m
-                timeRemainingSpan.textContent = `0d 0h 1m`;
-            }
+            timeRemainingSpan.textContent = formatHintTimeRemaining(timeDiff);
 
             // Update the countdown every minute
             updateHintCountdown(hintElement, startTime, hint.number);
@@ -357,6 +350,14 @@ async function loadHints(missionNumber) {
             });
         }
     }
+}
+
+function formatHintTimeRemaining(timeDiff) {
+    const totalMinutes = Math.ceil(timeDiff / (1000 * 60));
+    const days = Math.floor(totalMinutes / (60 * 24));
+    const hours = Math.floor((totalMinutes % (60 * 24)) / 60);
+    const minutes = totalMinutes % 60;
+    return `${days}d ${hours}h ${minutes}m`;
 }
 
 function updateHintCountdown(hintElement, startTime, hintNumber) {
@@ -394,14 +395,7 @@ function updateHintCountdown(hintElement, startTime, hintNumber) {
 
             return;
         }
-        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-        timeRemainingSpan.textContent = `${days}d ${hours}h ${minutes}m`;
-        if (days === 0 && hours === 0 && minutes === 0) {
-            // Less than 1m left, show 0d 0h 1m
-            timeRemainingSpan.textContent = `0d 0h 1m`;
-        }
+        timeRemainingSpan.textContent = formatHintTimeRemaining(timeDiff);
     };
     updateCountdown();
     const countdownInterval = setInterval(updateCountdown, 20000); // Update every 20s
