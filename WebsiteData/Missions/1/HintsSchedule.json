@@ -1,0 +1,28 @@
+{
+    "hints": [
+        {
+            "number": 1,
+            "start_time": "2026-11-10T15:00:00Z"
+        },
+        {
+            "number": 2,
+            "start_time": "2026-11-11T15:00:00Z"
+        },
+        {
+            "number": 3,
+            "start_time": "2026-11-12T15:00:00Z"
+        },
+        {
+            "number": 4,
+            "start_time": "2026-11-13T15:00:00Z"
+        },
+        {
+            "number": 5,
+            "start_time": "2026-11-14T15:00:00Z"
+        },
+        {
+            "number": 6,
+            "start_time": "2026-11-15T15:00:00Z"
+        }
+    ]
+}
