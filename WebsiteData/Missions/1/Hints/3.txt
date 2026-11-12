@@ -1,0 +1,2 @@
+ASCII
+Now all you need to do is to write a script to decode it.
