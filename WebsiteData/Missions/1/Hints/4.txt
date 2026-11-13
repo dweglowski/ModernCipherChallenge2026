@@ -1,0 +1,10 @@
+First, you need to make sure that the binary is in blocks of 8.
+In this ciphertext, that is done for you already, however if you plan on using this function in some of the next challenges (hint: you will), your should make sure you code forces this.
+The Python below does two things. First, it removes all spaces from the text. It then takes characters i to i+8 (8 characters starting at position i) and print them. This is repeated for every multiple of 8 until the end of the message.
+<code>
+encoded = "01001010 01101111 "
+encoded = encoded.replace(" ", "")  # Remove spaces
+for i in range(0, len(encoded), 8): # For all multiples of 8 until we reach the end of the text
+    char_binary = encoded[i:i+8]  # Get block of 8 bits
+    print(char_binary)
+</code>
