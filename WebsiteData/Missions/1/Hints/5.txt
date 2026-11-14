@@ -1,0 +1,10 @@
+Next you need to convert the byte from binary to a number. This will later map to a letter or symbol.
+Python allows you to do this easily using the int(x, 2) syntax.
+<code>
+encoded = "01001010 01101111 "
+encoded = encoded.replace(" ", "")  # Remove spaces
+for i in range(0, len(encoded), 8): # For all multiples of 8 until we reach the end of the text
+    char_binary = encoded[i:i+8]  # Get block of 8 bits
+    char_code = int(char_binary, 2)  # Convert binary to integer
+    print(char_code)
+</code>
