@@ -1,0 +1,17 @@
+Finally, you need to use the ASCII table to convert each number into a letter or symbol.
+Again, python has a very nice function that does that for us: chr(x).
+All we need to do is to do this for every byte of binary and store the result.
+To make things easier for future challenges, the code below also puts all of this into a function.
+<code>
+def decode_ASCII(encoded):
+    decoded = ""
+    encoded = encoded.replace(" ", "")  # Remove spaces to force 8-bit blocks
+    for i in range(0, len(encoded), 8):
+        char_binary = encoded[i:i+8]  # Get block of 8 bits
+        char_code = int(char_binary, 2)  # Convert binary to integer
+        decoded += chr(char_code)  # Convert ASCII code to character
+    return decoded
+
+ciphertext = "01001010 01101111 "
+print(decode_ASCII(ciphertext))
+</code>
