@@ -1,0 +1,2 @@
+The ciphertext is not actually encrypted this week, just encoded.
+It is a fairly common encoding so you might be able guess what it is quite quickly.
