@@ -157,7 +157,7 @@ function renderLeaderboard(entries) {
     row.appendChild(cell);
     leaderboardBody.appendChild(row);
 
-    return;
+    return 0;
   }
 
   let previousScore = null;
@@ -221,6 +221,8 @@ function renderLeaderboard(entries) {
 
     leaderboardBody.appendChild(row);
   }
+
+  return visibleEntries.length;
 }
 
 
@@ -251,12 +253,12 @@ async function loadSelectedLeaderboard() {
       return;
     }
 
-    renderLeaderboard(data.entries);
+    const visibleEntryCount = renderLeaderboard(data.entries);
 
     leaderboardStatus.textContent =
-      data.entries.length === 0
+      visibleEntryCount === 0
         ? "No entries yet."
-        : `${data.entries.length} entries`;
+        : `${visibleEntryCount} entries`;
 
   } catch (error) {
 
@@ -304,12 +306,12 @@ async function initialiseLeaderboard() {
     leaderboardSelect.value = "total";
 
     // Display the initial results.
-    renderLeaderboard(data.entries);
+    const visibleEntryCount = renderLeaderboard(data.entries);
 
     leaderboardStatus.textContent =
-      data.entries.length === 0
+      visibleEntryCount === 0
         ? "No entries yet."
-        : `${data.entries.length} entries`;
+        : `${visibleEntryCount} entries`;
 
   } catch (error) {
 
