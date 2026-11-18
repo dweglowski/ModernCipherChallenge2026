@@ -1,0 +1,2 @@
+Only lowercase letters, upper case letters, numbers and (though not in this particular ciphertext) + and / appear in the ciphertext.
+That, combined with it being padded by an = is a good indication that this is probably base64.
