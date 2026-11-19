@@ -660,7 +660,15 @@ async function initializeMission() {
         // document.getElementById("SubmitContainer").style.display = "none";
         // Show the official solution
         document.getElementById("SolutionContainer").setAttribute("visible", "");
-        
+
+        // Add the link to the official solution on GitHub
+        // check for certain that the mission number is valid (1-10) before adding the link
+        if (missionNumber >= 1 && missionNumber <= 10) {
+            const solutionGithubURL = `https://github.com/dweglowski/ModernCipherChallenge2026/blob/main/WebsiteData/Missions/${missionNumber}/Solution.md`;
+            const seeSolutionLink = document.getElementById("SeeSolutionLink");
+            seeSolutionLink.href = solutionGithubURL;
+        }
+
         return;
     }
     else if (availabilityStatus === "Mission active") {
