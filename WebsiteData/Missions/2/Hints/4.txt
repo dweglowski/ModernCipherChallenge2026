@@ -1,0 +1,18 @@
+In code, it is pretty similar to the ASCII decode solution from last week.
+For ever character, you:
+1. convert it to a number
+2. convert that number to binary
+3. add that binary to the resulting stream (padding the start with 0s if it is not 6 bits long)
+
+Here is something that does steps 1 and 2
+<code>
+ciphertext = """SGFycnksCkkgaGFk"""
+
+binary_data = ""
+
+for char in ciphertext:
+    if char == "=":
+        continue  # skip padding characters
+    num = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".index(char)  # convert the character to and integer using the table defined in base64
+    print(num)
+</code>
