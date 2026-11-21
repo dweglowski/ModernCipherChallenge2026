@@ -1,0 +1,16 @@
+Step 3 is to convert the number into 6 bits of binary. Python lets us do this pretty easily.
+
+<code>
+ciphertext = """SGFycnksCkkgaGFk"""
+
+binary_data = ""
+
+for char in ciphertext:
+    if char == "=":
+        continue  # skip padding characters
+    num = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".index(char)  # convert the character to and integer using the table defined in base64
+    binary_data += format(num, '06b')  # convert to 6-bit binary
+
+
+print(binary_data)
+</code>
