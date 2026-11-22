@@ -1,0 +1,24 @@
+Finally, you should notice that the resulting binary is just 8 bit ASCII again, we have a function from last week to decode that.
+<code>
+ciphertext = """SGFycnksCkkgaGFk"""
+
+binary_data = ""
+
+for char in ciphertext:
+    if char == "=":
+        continue  # skip padding characters
+    num = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".index(char)  # convert the character to and integer using the table defined in base64
+    binary_data += format(num, '06b')  # convert to 6-bit binary
+
+
+def decode_ASCII(encoded):
+    decoded = ""
+    encoded = encoded.replace(" ", "")  # Remove spaces to force 8-bit blocks
+    for i in range(0, len(encoded), 8):
+        char_binary = encoded[i:i+8]  # Get block of 8 bits
+        char_code = int(char_binary, 2)  # Convert binary to integer
+        decoded += chr(char_code)  # Convert ASCII code to character
+    return decoded
+
+print(decode_ASCII(binary_data))
+</code>
