@@ -1,0 +1,48 @@
+{
+    "hints": [
+        {
+            "number": 1,
+            "start_time": "2026-11-24T15:00:00Z"
+        },
+        {
+            "number": 2,
+            "start_time": "2026-11-25T00:00:00Z"
+        },
+        {
+            "number": 3,
+            "start_time": "2026-11-25T15:00:00Z"
+        },
+        {
+            "number": 4,
+            "start_time": "2026-11-26T00:00:00Z"
+        },
+        {
+            "number": 5,
+            "start_time": "2026-11-26T15:00:00Z"
+        },
+        {
+            "number": 6,
+            "start_time": "2026-11-27T00:00:00Z"
+        },
+        {
+            "number": 7,
+            "start_time": "2026-11-27T15:00:00Z"
+        },
+        {
+            "number": 8,
+            "start_time": "2026-11-28T00:00:00Z"
+        },
+        {
+            "number": 9,
+            "start_time": "2026-11-28T15:00:00Z"
+        },
+        {
+            "number": 10,
+            "start_time": "2026-11-29T00:00:00Z"
+        },
+        {
+            "number": 11,
+            "start_time": "2026-11-29T15:00:00Z"
+        }
+    ]
+}
