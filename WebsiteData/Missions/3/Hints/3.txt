@@ -1,0 +1,1 @@
+They key is a multiple of 8 bits. If you know what you are doing, this fact makes it easier.
