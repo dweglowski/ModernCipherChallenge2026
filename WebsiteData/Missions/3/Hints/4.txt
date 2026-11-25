@@ -1,0 +1,1 @@
+Look at every Nth byte, do you notice something?
