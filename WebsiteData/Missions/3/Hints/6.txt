@@ -1,0 +1,1 @@
+Similar to a Vigenere cipher, try break just every 7th byte, then every 7th + 1 byte and so on instead of trying to break the entire key at the same time.
