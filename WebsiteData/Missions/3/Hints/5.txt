@@ -15,6 +15,6 @@ for offset in range(N):
     print(f"Offset {offset}:")
     unique = set(nth_bytes[offset])
     print(f"  Unique bytes: {len(unique)}")
-<code>
+</code>
 Especially compared to other values of N, ~30 unique bytes is lower than we would expect.
 Why could this be significant? Remember, you expect to see punctuation and some capital letters as well.
