@@ -1,0 +1,20 @@
+What happens when you look at every 7th byte?
+<code>
+ciphertext = "0110101101100000101100111100000010111110100010111111011001010110" # ...
+N = 7
+nth_bytes = [[] for _ in range(N)] # Create N empty lists, one per offset
+
+for i in range(0, len(ciphertext), 8):
+    byte = ciphertext[i:i+8]
+    
+    offset = (i // 8) % N
+
+    nth_bytes[offset].append(byte)
+
+for offset in range(N):
+    print(f"Offset {offset}:")
+    unique = set(nth_bytes[offset])
+    print(f"  Unique bytes: {len(unique)}")
+<code>
+Especially compared to other values of N, ~30 unique bytes is lower than we would expect.
+Why could this be significant? Remember, you expect to see punctuation and some capital letters as well.
