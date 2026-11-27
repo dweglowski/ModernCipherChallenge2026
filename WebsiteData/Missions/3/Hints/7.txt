@@ -1,0 +1,15 @@
+There are only 256 possibilities for each byte of the key.
+BTW here is some code to xor a byte of ciphertext with a byte from a candidate key:
+<code>
+def xor(ct_byte, key_byte):
+    # Convert both to intigers to use Python's built-in XOR operator
+    ct_int = int(ct_byte, 2)
+    key_int = int(key_byte, 2)
+    
+    # XOR the two integers and convert back to binary string
+    xor_int = ct_int ^ key_int
+
+    xor_bin = format(xor_int, '08b')  # Format as 8-bits
+
+    return xor_bin
+</code>
