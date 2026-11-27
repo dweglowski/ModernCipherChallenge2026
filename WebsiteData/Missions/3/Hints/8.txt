@@ -1,0 +1,1 @@
+Brute force one byte of the key at a time. If it produces a non printable ASCII character (remember the plaintext might contain punctuation, newlines etc) then immediately reject that candidate.
