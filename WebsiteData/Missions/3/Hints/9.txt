@@ -1,0 +1,44 @@
+<code>
+ciphertext = "0110101101100000101100111100000010111110100010111111011001010110" # ...
+N = 7
+nth_bytes = [[] for _ in range(N)] # Create N empty lists, one per offset
+
+
+for i in range(0, len(ciphertext), 8):
+    byte = ciphertext[i:i+8]
+    
+    offset = (i // 8) % N
+
+    nth_bytes[offset].append(byte)
+
+
+def xor(ct_byte, key_byte):
+    # Convert both to intigers to use Python's built-in XOR operator
+    ct_int = int(ct_byte, 2)
+    key_int = int(key_byte, 2)
+    
+    # XOR the two integers and convert back to binary string
+    xor_int = ct_int ^ key_int
+
+    xor_bin = format(xor_int, '08b')  # Format as 8-bits
+
+    return xor_bin
+
+def printable(bs):
+    for b in bs:
+        b = int(b, 2)
+        if not (32 <= b <= 126 or b == 10):
+            return False
+    return True
+
+for offset in range(N):
+    slice = nth_bytes[offset]
+    print(f"Offset {offset}:")
+    for k in range(256):
+        key_byte = format(k, '08b')  # Format k as 8-bit binary
+        decrypted_bytes = [xor(byte, key_byte) for byte in slice]
+        
+        if not printable(decrypted_bytes):
+            continue
+        print("Candidate key byte:", key_byte)
+</code>
